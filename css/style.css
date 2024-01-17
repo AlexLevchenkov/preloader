@@ -80,7 +80,7 @@ body {
 }
 .preloader .text-block h2 span.letter {
   min-width: clamp(30px, 4vw, 50px);
-  animation: rotateLetter calc(var(--delay) * 1.6 / 3) cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation: rotateLetterAlt calc(var(--delay) * 1.6 / 3) cubic-bezier(0.39, 0.575, 0.565, 1);
   animation-delay: calc(var(--delay) / 3);
   animation-fill-mode: forwards;
 }
