@@ -1,0 +1,185 @@
+@font-face {
+  font-family: europeextendedc_bold;
+  src: url(../fonts/europeextendedc_bold.otf);
+  font-weight: bold;
+}
+body {
+  --delay: 4s;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, p, ul, ol[class], li, dl, dd, figure, figcaption, blockquote {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body {
+  width: 100vw;
+  height: 100dvh;
+  background: url(../img/background-body.jpg) top/cover no-repeat;
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/background.jpg) center/cover no-repeat;
+  animation: hiddenPreloader 1s;
+  animation-delay: calc(var(--delay) + 1s);
+  animation-fill-mode: forwards;
+}
+.preloader::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  animation: blackout var(--delay);
+  animation-fill-mode: forwards;
+}
+.preloader .text-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  color: #fff;
+  font: bold clamp(2rem, 4.4vw, 5.275rem)/1.5 "europeextendedc_bold", "Segoe UI", Helvetica, Arial, sans-serif;
+  text-align: center;
+  z-index: 2;
+}
+.preloader .text-block h2 {
+  font: inherit;
+}
+.preloader .text-block h2 span {
+  display: inline-block;
+}
+.preloader .text-block h2 span.letter {
+  min-width: clamp(30px, 4vw, 50px);
+  animation: rotateLetter calc(var(--delay) * 1.6 / 3) cubic-bezier(0.39, 0.575, 0.565, 1);
+  animation-delay: calc(var(--delay) / 3);
+  animation-fill-mode: forwards;
+}
+.preloader .img-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.preloader svg {
+  max-width: 80%;
+  width: 300px;
+  animation: showLogo var(--delay);
+}
+.preloader svg .hidden {
+  overflow: hidden;
+  opacity: 0;
+  animation: showHidden 1s;
+  animation-delay: var(--delay);
+  animation-fill-mode: forwards;
+}
+.preloader svg path {
+  fill: #fff;
+  fill-rule: evenodd;
+}
+.preloader svg path.red {
+  fill: red;
+}
+
+@keyframes blackout {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgb(0, 0, 0);
+  }
+}
+@keyframes rotateLetter {
+  0% {
+    transform: rotateY(0);
+  }
+  20% {
+    transform: rotateY(90deg);
+  }
+  40% {
+    transform: rotateY(180deg);
+  }
+  60% {
+    transform: rotateY(270deg);
+  }
+  80% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(450deg);
+  }
+}
+@keyframes rotateLetterAlt {
+  0% {
+    transform: rotateY(0);
+  }
+  33% {
+    transform: rotateY(90deg);
+  }
+  66% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(270deg);
+  }
+}
+@keyframes showLogo {
+  0%, 86.66667% {
+    transform: rotateY(-90deg);
+  }
+  100% {
+    transform: rotateY(0);
+  }
+}
+@keyframes showHidden {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hiddenPreloader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@media (max-width: 576px) {
+  .preloader .text-block {
+    width: 100%;
+  }
+}
