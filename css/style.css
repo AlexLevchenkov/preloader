@@ -4,7 +4,7 @@
   font-weight: bold;
 }
 body {
-  --delay: 4s;
+  --delay: 1.5s;
 }
 
 *, *::before, *::after {
